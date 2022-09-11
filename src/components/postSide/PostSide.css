@@ -1,0 +1,32 @@
+.postSide{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100vh;
+    overflow: auto;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.ps-button{
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 12px;
+}
+
+.previewImg{
+    position: relative;
+}
+.previewImg>svg{
+    position: absolute;
+    right:1rem;
+    top: 0.5rem;
+    cursor: pointer;
+}
+.previewImg>img{
+    width: 100%;
+    max-height: 20rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
