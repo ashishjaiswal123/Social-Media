@@ -6,8 +6,27 @@ import Signup from '../../components/form/Signup'
 
 const Auth = () => {
   const [IsSignup, setIsSignUp] = useState(true)
-  
+  const [data, setData] = useState({firstname: "", lastname: "", password: "", confirmpassword: ""})
+  const [confirmPass, setConfirmPass] = useState(true)
 
+  const handleChange = (e) => {
+    setData({...data, [e.target.name]: e.target.value})
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if(IsSignup){
+      if(data.password !== data.confirmpassword) {
+        setConfirmPass(false)
+      }
+    }
+  }
+
+  const resetForm = () => {
+    setConfirmPass(true)
+    setData({firstname: "", lastname: "", password: "", confirmpassword: ""})
+  }
   return (
     <div className="auth">
 
@@ -21,7 +40,9 @@ const Auth = () => {
       </div>
 
       {/* right side*/}
-      {IsSignup ? <Signup setIsSignUp={setIsSignUp}/> : <Login setIsSignUp={setIsSignUp}/>}
+      {IsSignup ? <Signup data={data} setIsSignUp={setIsSignUp} resetForm={resetForm} confirmPass={confirmPass} handleSubmit={handleSubmit} handleChange={handleChange}/> 
+      : 
+      <Login data={data} setIsSignUp={setIsSignUp} resetForm={resetForm} handleSubmit={handleSubmit} handleChange={handleChange}/>}
       
     </div>
   )
