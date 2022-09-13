@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Auth.css'
 import Logo from '../../img/logo.png'
+import Login from '../../components/form/Login'
+import Signup from '../../components/form/Signup'
 
 const Auth = () => {
+  const [IsSignup, setIsSignUp] = useState(true)
+  
+
   return (
     <div className="auth">
+
+      {/* left side */}
       <div className="a-left">
         <img src={Logo} alt="" />
         <div className="webname">
@@ -12,45 +19,38 @@ const Auth = () => {
           <h6>Explore the ideas throughout the world</h6>
         </div>
       </div>
-      <LogIn/>
+
+      {/* right side*/}
+      {IsSignup ? <Signup setIsSignUp={setIsSignUp}/> : <Login setIsSignUp={setIsSignUp}/>}
+      
     </div>
   )
 }
 
-function LogIn() {
-  return (
-    <div className="a-right">
-      <form className="infoForm authForm">
-        <h3>Log In</h3>
+// function LogIn() {
+//   return (
+//     <div className="a-right">
+//       <form className="infoForm authForm">
+//         <h3>Log In</h3>
 
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            className="infoInput"
-            name="userName"
-          />
-        </div>
+//         <div>
+//           <input type="text" placeholder="Username" className="infoInput" name="userName"/>
+//         </div>
 
-        <div>
-          <input
-            type="password"
-            className="infoInput"
-            placeholder="Password"
-            name="password"
-          />
-        </div>
+//         <div>
+//           <input type="password" className="infoInput" placeholder="Password" name="password"/>
+//         </div>
 
-        <div>
-            <span style={{ fontSize: "12px" }}>
-              Don't have an account Sign up
-            </span>
-          <button className="button infobtn">Login</button>
-        </div>
-      </form>
-    </div>
-  );
-}
+//         <div>
+//             <span style={{ fontSize: "12px" }}>
+//               Don't have an account Sign up
+//             </span>
+//           <button className="button infobtn">Login</button>
+//         </div>
+//       </form>
+//     </div>
+//   );
+// }
 
 function SignUp(){
   return(
