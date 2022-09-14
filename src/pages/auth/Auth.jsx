@@ -3,12 +3,14 @@ import './Auth.css'
 import Logo from '../../img/logo.png'
 import Login from '../../components/form/Login'
 import Signup from '../../components/form/Signup'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { logIn, signUp } from '../../actions/AuthAction'
 
 const Auth = () => {
   const [IsSignup, setIsSignUp] = useState(true)
   const dispatch = useDispatch()
+  const loading = useSelector((state)=>state.authReducer.loading)
+  console.log(loading)
   const [data, setData] = useState({firstname: "", lastname: "", password: "", confirmpassword: ""})
   const [confirmPass, setConfirmPass] = useState(true)
 
@@ -43,9 +45,9 @@ const Auth = () => {
       </div>
 
       {/* right side*/}
-      {IsSignup ? <Signup data={data} setIsSignUp={setIsSignUp} resetForm={resetForm} confirmPass={confirmPass} handleSubmit={handleSubmit} handleChange={handleChange}/> 
+      {IsSignup ? <Signup loading={loading} data={data} setIsSignUp={setIsSignUp} resetForm={resetForm} confirmPass={confirmPass} handleSubmit={handleSubmit} handleChange={handleChange}/> 
       : 
-      <Login data={data} setIsSignUp={setIsSignUp} resetForm={resetForm} handleSubmit={handleSubmit} handleChange={handleChange}/>}
+      <Login loading={loading} data={data} setIsSignUp={setIsSignUp} resetForm={resetForm} handleSubmit={handleSubmit} handleChange={handleChange}/>}
       
     </div>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Form.css'
 
-const Signup = ({setIsSignUp, handleChange,confirmPass, handleSubmit, resetForm, data}) => {
+const Signup = ({setIsSignUp, handleChange,confirmPass, handleSubmit, resetForm, data,loading}) => {
   return (
     <div className="a-right">
       <form className='infoForm authForm' onSubmit={handleSubmit}>
@@ -23,7 +23,7 @@ const Signup = ({setIsSignUp, handleChange,confirmPass, handleSubmit, resetForm,
             Aready have an account. Login!
           </span>
         </div>
-        <button className="button infobtn" type='submit'>Signup</button>
+        <button className="button infobtn" type='submit' disabled={loading}>{loading? "Loading..." : "Sign Up"}</button>
       </form>
     </div>
   )
