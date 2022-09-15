@@ -7,6 +7,7 @@ import { uploadImage, uploadPost } from '../../actions/UploadAction'
 
 
 const PostShare = () => {
+    const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
     const loading = useSelector((state)=>state.postReducer.uploading)
     const [image, setImage] = useState(null)
     const imageRef = useRef()
@@ -52,7 +53,9 @@ const PostShare = () => {
 
   return (
     <div className="postShare">
-        <img src={ProfileImage} alt="" />
+
+        <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"} alt="" />
+
         <div>
             <input ref={desc} required type="text" placeholder="What's happening" />
             <div className="postOptions">
