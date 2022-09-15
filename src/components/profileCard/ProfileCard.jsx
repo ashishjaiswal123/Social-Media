@@ -3,12 +3,11 @@ import './ProfileCard.css'
 import {useSelector} from 'react-redux'
 import {Link} from "react-router-dom"
 
-const ProfileCard = () => {
+const ProfileCard = ({location}) => {
     const {user} = useSelector((state)=> state.authReducer.authData)
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
+    const posts = useSelector((state)=> state.postReducer.posts)
 
-    const ProfilePage = false
-    
   return (
     <div className="profileCard">
         <div className="profileImages">
@@ -36,13 +35,15 @@ const ProfileCard = () => {
                     <span>Followers</span>
                 </div>
 
-                {ProfilePage && (
+                {location === "profilePage" && (
                     <>
                     <div className="vl">
 
                     </div>
                     <div className="follow">
-                        <span>3</span>
+                        <span>
+                            {posts.filter((post)=> post.userId === user._id).length}
+                        </span>
                         <span>Posts</span>
                     </div>
                     </>
@@ -51,7 +52,7 @@ const ProfileCard = () => {
             <hr/>
         </div>
         
-        {ProfilePage ? '' : <span> 
+        {location === "profilePage" ? '' : <span> 
             <Link to={`/profile/${user._id}`} style={{textDecoration:"none", color:"inherit"}}>
             My Profile
             </Link>
