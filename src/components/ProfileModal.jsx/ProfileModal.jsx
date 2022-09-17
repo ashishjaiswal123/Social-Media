@@ -33,7 +33,7 @@ function ProfileModal({modalOpened, setModalOpened}) {
         <div>
             Profile Image
             <input type="file" name='profileImg'/>
-            CoverImage
+            Cover Image
             <input type="file" name='coverImg'/>
         </div>
 
