@@ -20,7 +20,8 @@
     width: 100%;
 }
 .profileImages>img:nth-of-type(2){
-    width: 6rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     position: absolute;
     bottom: -3rem;
