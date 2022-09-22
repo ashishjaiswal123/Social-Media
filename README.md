@@ -4,6 +4,8 @@ A MERN stack based project on social media application. <br />
 It is completely working project. Its' completely responsive application. <br />
 MongoDB Express React Redux NodeJs are user in this project.<br />
 
+Server side of this project := https://github.com/ashishjaiswal123/Social-Media-BackEnd
+
 ## Featurs included in this project:-
 register and login users.<br />
 post images<br />
